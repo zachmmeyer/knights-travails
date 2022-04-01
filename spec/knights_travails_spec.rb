@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/knights-travails'
+require './lib/knights_travails'
 
 describe Knight do
   describe '#knight_moves' do
