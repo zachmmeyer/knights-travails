@@ -9,4 +9,9 @@ describe Knight do
       expect(knight.knight_moves([0, 0], [1, 2])).to eql([[0, 0], [1, 2]])
     end
 
+    it 'returns the path of the knight moving twice' do
+      knight = Knight.new
+      expect(knight.knight_moves([0, 0], [3, 3])).to eql([[0, 0], [1, 2], [3, 3]])
+    end
+  end
 end
