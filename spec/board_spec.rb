@@ -53,4 +53,17 @@ describe Board do
       expect(board.mark_location_visited([0, 0])).to eql(nil)
     end
   end
+
+  describe '#visited?' do
+    it 'returns true if the location was previously visited' do
+      board = Board.new
+      board.mark_location_visited([0, 0])
+      expect(board.visited?([0, 0])).to eql(true)
+    end
+
+    it 'returns false if the location was not previously visited' do
+      board = Board.new
+      expect(board.visited?([0, 0])).to eql(false)
+    end
+  end
 end

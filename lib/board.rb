@@ -10,6 +10,12 @@ class Board
     @matrix
   end
 
+  def visited?(location)
+    x = location[0]
+    y = location[1]
+    @matrix[x][y] == 1
+  end
+
   def mark_location_visited(location)
     x = location[0]
     y = location[1]
