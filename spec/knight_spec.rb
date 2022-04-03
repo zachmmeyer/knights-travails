@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/knight'
+require './lib/board'
 
 describe Knight do
   describe '#generate_moves' do
@@ -36,6 +37,16 @@ describe Knight do
       knight = Knight.new
       moves = [[-1, -2], [-1, 2], [-2, -1], [-2, 1], [1, -2], [2, -1]]
       expect(knight.validate_moves(moves)).to eql([])
+    end
+  end
+
+  describe '#remove_visited_locations' do
+    it 'returns an array that has been filtered of previously visited locations' do
+      knight = Knight.new
+      board = Board.new
+      board.mark_location_visited([0, 0])
+      moves = [[0, 0], [1, 1]]
+      expect(knight.remove_visited_locations(moves, board)).to eql([[1, 1]])
     end
   end
 

@@ -6,8 +6,14 @@ require_relative('board')
 class Knight
   include Location
 
-  def validate_moves(all_moves)
-    all_moves.filter do |move|
+  def remove_visited_locations(moves, board)
+    moves.filter do |move|
+      !board.visited?(move)
+    end
+  end
+
+  def validate_moves(moves)
+    moves.filter do |move|
       (0..7).include?(move[0]) && (0..7).include?(move[1])
     end
   end
@@ -39,10 +45,11 @@ class Knight
       board.mark_location_visited(current_location)
       all_moves = generate_moves(current_location)
       valid_moves = validate_moves(all_moves)
+      new_valid_moves = remove_visited_locations(valid_moves, board)
       if current_location == end_location
         # Break loop
         # Print path
-        return "You made it in 0 moves!\n#{start_location}\n#{end_location}\n"
+        return "You made it in 0 moves!\n#{start_location}\n#{current_location}\n"
       end
       queue += valid_moves
     end
