@@ -13,7 +13,7 @@ class Board
   def mark_location_visited(location)
     x = location[0]
     y = location[1]
-    return unless (0..7).include?(x && y)
+    return unless (0..7).include?(x) && (0..7).include?(y)
 
     return nil if @matrix[x][y] == 1
 
