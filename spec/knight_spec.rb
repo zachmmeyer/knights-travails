@@ -19,6 +19,26 @@ describe Knight do
     end
   end
 
+  describe '#validate_moves' do
+    it 'returns an array valid moves from a list containing some invalid moves' do
+      knight = Knight.new
+      moves = [[-1, -2], [-1, 2], [-2, -1], [-2, 1], [1, -2], [1, 2], [2, -1], [2, 1]]
+      expect(knight.validate_moves(moves)).to eql([[1, 2], [2, 1]])
+    end
+
+    it 'returns an array valid moves from a list containing no invalid moves' do
+      knight = Knight.new
+      moves = [[2, 1], [2, 5], [1, 2], [1, 4], [4, 1], [4, 5], [5, 2], [5, 4]]
+      expect(knight.validate_moves(moves)).to eql([[2, 1], [2, 5], [1, 2], [1, 4], [4, 1], [4, 5], [5, 2], [5, 4]])
+    end
+
+    it 'returns an array valid moves from a list containing only invalid moves' do
+      knight = Knight.new
+      moves = [[-1, -2], [-1, 2], [-2, -1], [-2, 1], [1, -2], [2, -1]]
+      expect(knight.validate_moves(moves)).to eql([])
+    end
+  end
+
   describe '#knight_moves' do
     it 'returns the path of the knight not moving' do
       knight = Knight.new

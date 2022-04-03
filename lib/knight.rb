@@ -4,6 +4,14 @@ require_relative('location')
 require_relative('board')
 # Knight class
 class Knight
+  include Location
+
+  def validate_moves(all_moves)
+    all_moves.filter do |move|
+      (0..7).include?(move[0]) && (0..7).include?(move[1])
+    end
+  end
+
   def generate_moves(location)
     all_moves = []
     all_moves << left_up_up(location)
