@@ -3,6 +3,22 @@
 require './lib/knight'
 
 describe Knight do
+  describe '#generate_moves' do
+    it 'returns an array of all surrounding moves' do
+      knight = Knight.new
+      location = [3, 3]
+      moves = [[2, 1], [2, 5], [1, 2], [1, 4], [4, 1], [4, 5], [5, 2], [5, 4]]
+      expect(knight.generate_moves(location)).to eql(moves)
+    end
+
+    it 'returns an array of all surrounding moves, including illegal ones' do
+      knight = Knight.new
+      location = [0, 0]
+      moves = [[-1, -2], [-1, 2], [-2, -1], [-2, 1], [1, -2], [1, 2], [2, -1], [2, 1]]
+      expect(knight.generate_moves(location)).to eql(moves)
+    end
+  end
+
   describe '#knight_moves' do
     it 'returns the path of the knight not moving' do
       knight = Knight.new
