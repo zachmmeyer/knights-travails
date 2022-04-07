@@ -62,8 +62,8 @@ class Knight
       if edge_list[count].include?(end_location)
         reversed_edge_list = edge_list.reverse
         path = generate_path(reversed_edge_list, start_location, end_location)
-        p path
-        return 'Found it!'
+        return path
+        # return 'Found it!'
       end
       count += 1
       queue += valid_moves
