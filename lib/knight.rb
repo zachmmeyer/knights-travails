@@ -13,7 +13,7 @@ class Knight
   end
 
   def validate_moves(moves)
-    moves.filter do |move|
+    moves.select do |move|
       (0..7).include?(move[0]) && (0..7).include?(move[1])
     end
   end
